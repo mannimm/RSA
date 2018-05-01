@@ -21,12 +21,17 @@ print modN
 
 
 
-#encrypted_msg = RSA_util.numList2string( RSA_util.blocks2numList(RSA_util.encrypt(message, modN, e, 15), 15) )
+# encrypted_msg = RSA_util.numList2string( RSA_util.blocks2numList(RSA_util.encrypt(message, modN, e, 15), 15) )
 
-numList = RSA_util.encrypt(message, modN, e, 15)
+# numList = RSA_util.encrypt(message, modN, e, 15)
 
-for m in numList:
+numList = RSA_util.string2numList(message)
+blocks = RSA_util.numList2blocks(numList, 15)     #get the message in blocks
+
+for m in blocks:
 	print m
+
+
 
 msg_fd.close()
 pub_fd.close()
